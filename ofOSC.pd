@@ -1,4 +1,4 @@
-#N canvas 119 32 722 268 10;
+#N canvas 42 64 714 278 10;
 #X obj 60 201 sendOSC;
 #X msg 60 25 connect localhost 8080;
 #X msg 67 50 disconnect;
@@ -11,17 +11,17 @@
 #X floatatom 515 163 5 0 0 0 - - -;
 #X obj 458 193 send w;
 #X obj 515 193 send h;
-#X obj 198 130 random 10;
-#X obj 161 112 random 10;
+#X obj 198 127 random 10;
+#X obj 161 106 random 10;
 #X obj 161 54 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 161 165 pack f f f;
-#X obj 236 148 random 10;
-#X obj 161 93 trigger a a a;
-#X obj 249 93 receive w;
-#X obj 287 111 receive h;
-#X floatatom 249 112 5 0 0 0 - - -;
-#X floatatom 287 130 5 0 0 0 - - -;
+#X obj 236 147 random 10;
+#X obj 161 84 trigger a a a;
+#X obj 249 84 receive w;
+#X obj 287 105 receive h;
+#X floatatom 249 106 5 0 0 0 - - -;
+#X floatatom 287 127 5 0 0 0 - - -;
 #X obj 458 54 dumpOSC 8081;
 #X msg 161 184 send /of/test \$1 \$2 \$3;
 #X obj 60 3 loadbang;
