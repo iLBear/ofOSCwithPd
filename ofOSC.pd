@@ -1,9 +1,9 @@
-#N canvas 42 64 714 278 10;
-#X obj 60 201 sendOSC;
-#X msg 60 25 connect localhost 8080;
-#X msg 67 50 disconnect;
-#X floatatom 60 221 5 0 0 0 - - -;
-#X floatatom 99 221 5 0 0 0 - - -;
+#N canvas 355 161 714 278 10;
+#X obj 60 199 sendOSC;
+#X msg 10 136 connect localhost 8080;
+#X msg 60 158 disconnect;
+#X floatatom 60 219 5 0 0 0 - - -;
+#X floatatom 99 219 5 0 0 0 - - -;
 #X obj 458 82 OSCroute /window;
 #X obj 458 108 OSCroute /pixel;
 #X obj 458 135 unpack i i;
@@ -11,22 +11,24 @@
 #X floatatom 515 163 5 0 0 0 - - -;
 #X obj 458 193 send w;
 #X obj 515 193 send h;
-#X obj 198 127 random 10;
-#X obj 161 106 random 10;
-#X obj 161 54 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 198 97 random 10;
+#X obj 161 76 random 10;
+#X obj 161 24 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 161 165 pack f f f;
-#X obj 236 147 random 10;
-#X obj 161 84 trigger a a a;
-#X obj 249 84 receive w;
-#X obj 287 105 receive h;
-#X floatatom 249 106 5 0 0 0 - - -;
-#X floatatom 287 127 5 0 0 0 - - -;
+#X obj 161 135 pack f f f;
+#X obj 236 117 random 10;
+#X obj 161 54 trigger a a a;
+#X obj 249 54 receive w;
+#X obj 287 75 receive h;
+#X floatatom 249 76 5 0 0 0 - - -;
+#X floatatom 287 97 5 0 0 0 - - -;
 #X obj 458 54 dumpOSC 8081;
-#X msg 161 184 send /of/test \$1 \$2 \$3;
-#X obj 60 3 loadbang;
+#X msg 161 154 send /of/test \$1 \$2 \$3;
+#X obj 10 114 loadbang;
 #X text 449 23 OSC receive from openFrameworks This gets window width
 and height;
+#X text 159 170 send OSC message with 3 integers 1:0~10 \, 2:0~WinWidth
+\, 3:0~WinHeight;
 #X connect 0 0 3 0;
 #X connect 0 1 4 0;
 #X connect 1 0 0 0;
