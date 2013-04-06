@@ -9,6 +9,8 @@ void testApp::setup(){
     ofBackground(24);
     ofSetFrameRate(30);
     ofSetCircleResolution(64);
+    ofEnableSmoothing();
+    ofSetVerticalSync(true);
     
     ripples.reserve(1<<10);
     
@@ -27,6 +29,10 @@ void testApp::update(){
         
         //死亡判定
         if(ripples.at(i).life <= 0){
+            ofxOscMessage m;
+            m.setAddress("/dead");
+            m.addIntArg((int)ofRandom(12));
+            sender.sendMessage(m);
             std::vector<Ripple>::iterator it = ripples.erase(ripples.begin()+i);
         }
     }
@@ -45,7 +51,7 @@ void testApp::update(){
             rip->radian = m.getArgAsInt32(0);
             rip->point.x = m.getArgAsInt32(1);
             rip->point.y = m.getArgAsInt32(2);
-            rip->speed = ofRandom(0.1, 2.0);
+            rip->speed = ofRandom(0.5, 1.0);
             rip->color.set(ofRandom(128, 255), ofRandom(128, 255), ofRandom(128, 255));
             rip->life = 100+(int)ofRandom(-25, 25);
             ripples.push_back(*rip);
@@ -72,6 +78,8 @@ void testApp::dumpOSC(ofxOscMessage m) {
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    ofNoFill();
+    ofSetLineWidth(1.0);
     for(int i = 0; i < ripples.size(); i++){
         ofSetColor(ripples.at(i).color);
         ofCircle(ripples.at(i).point, ripples.at(i).radian);

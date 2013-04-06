@@ -9,7 +9,7 @@
 #include "ripple.h"
 
 void Ripple::update(){
-    static int threshold = 20;
+    static int threshold = 50;
     
     radian += speed;
     life--;
@@ -17,7 +17,7 @@ void Ripple::update(){
     if(life > threshold){
         color.a = 100;
     }else{
-        speed *= 1.1;
+        speed *= 1.03;
         color.a = ofMap(life, 0, threshold, 0, 100);
     }
 }
