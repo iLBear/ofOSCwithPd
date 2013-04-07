@@ -4,3 +4,5 @@ myOSCtestDebug.app
 myOSCtestRelease.app
 
 .DS_Store
+
+build/
