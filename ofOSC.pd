@@ -1,4 +1,4 @@
-#N canvas 26 100 1160 718 10;
+#N canvas 25 125 1160 718 10;
 #X obj 80 252 sendOSC;
 #X msg 30 180 connect localhost 8080;
 #X msg 80 212 disconnect;
