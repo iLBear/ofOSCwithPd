@@ -31,10 +31,10 @@ void testApp::update(){
 		static int lr = 0;
         if(ripples.at(i).life <= 0){
             ofxOscMessage m;
-            m.setAddress("/sound/trigger");		// osc://sound/trigger (int)rand(12) (int)LR[1or2]
-            m.addIntArg((int)ofRandom(12));
-			lr = (lr+1)%2;	//1 or 2 (left or right)
+            m.setAddress("/sound/trigger");	// osc://sound/trigger (int)LR[1or2] (int)rand(12)
+			lr = (lr+1)%2;					// 1 or 2 (left or right)
             m.addIntArg(lr+1);
+			m.addIntArg((int)ofRandom(12));
 			sender.sendMessage(m);
             std::vector<Ripple>::iterator it = ripples.erase(ripples.begin()+i);
 			dumpOSC(m);
